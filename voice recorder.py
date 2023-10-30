@@ -45,9 +45,11 @@ p.terminate()
 audio_data = np.frombuffer(b''.join(frames), dtype=np.int16)
 
 # Generate a unique filename based on the current timestamp
+import random
+num = int(random.randrange(0, 500000, 3))
 timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-audio_filename = os.path.join(audio_folder, f"recorded_audio_{timestamp}.wav")
-spectrogram_filename = os.path.join(spectrogram_folder, f"spectrogram_{timestamp}.png")
+audio_filename = os.path.join(audio_folder, f"recorded_audio_{timestamp}_{num}.wav")
+spectrogram_filename = os.path.join(spectrogram_folder, f"spectrogram_{timestamp}_{num}.png")
 
 # Save the recorded audio
 with wave.open(audio_filename, 'wb') as wf:
